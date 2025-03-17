@@ -1,0 +1,6 @@
+public class Gjergj_Çuni {
+	public static void main(String[] args) {
+		System.out.println("Hello GitHub, I am Gjergj \n I like programming in Java.");
+	}
+
+}
