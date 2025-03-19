@@ -1,0 +1,91 @@
+
+/* Në këtë projekt, ne i japim mundësinë përdoruesit të japë input matricën sipas dëshirës së tij
+dhe si output të marrë rezultatin nëse matrica e dhënë grafi i saj është apo nuk është pemë.
+Udhëzim (ndihme) gjatë perdorimit.
+Për të marrë output se grafi është pemë: së pari jep input numrin e nyjeve "2" dhe pastaj rreshtin një "2 1 2" dhe rreshtin dy "1 2 1"
+Për të marrë output se grafi nuk është pemë: së pari jep input numrin e nyjeve "3" dhe pastaj rreshtin një "2 2 2", rreshtin dy "3 2 1" dhe rreshtin tre "1 1 1"
+Normalisht të shfrytëzohet edhe për matricat sipas dëshirës së shfrytëzuesit/kontrolluesit te projektit.*/
+
+import javax.swing.*;
+
+public class ProjektiMatematikeDiskrete {
+
+// Metoda për të kontrolluar nëse grafi është i lidhur duke përdorur DFS
+	private static void dfs(int node, boolean[] vizituar, int[][] matricaAdiacente) {
+		vizituar[node] = true;
+		for (int i = 0; i < matricaAdiacente.length; i++) {
+			if (matricaAdiacente[node][i] == 1 && !vizituar[i]) {
+				dfs(i, vizituar, matricaAdiacente);
+			}
+		}
+	}
+
+	// Metoda për të numëruar skajet në graf
+	private static int numroSkajet(int[][] matricaAdiacente) {
+		int numriSkajeve = 0;
+		for (int i = 0; i < matricaAdiacente.length; i++) {
+			for (int j = i + 1; j < matricaAdiacente.length; j++) {
+				if (matricaAdiacente[i][j] == 1) {
+					numriSkajeve++;
+				}
+			}
+		}
+		return numriSkajeve;
+	}
+
+	// Metoda për të kontrolluar nëse grafi është pemë
+	public static boolean eshtePeme(int[][] matricaAdiacente) {
+		int n = matricaAdiacente.length;
+
+		// Kontrollo nëse grafi ka n-1 skaje
+		if (numroSkajet(matricaAdiacente) != n - 1) {
+			return false;
+		}
+
+		// Kontrollo lidhshmërinë duke përdorur DFS
+		boolean[] vizituar = new boolean[n];
+		dfs(0, vizituar, matricaAdiacente);
+
+		// Nëse ndonjë nyje nuk është vizituar, grafi nuk është i lidhur
+		for (boolean v : vizituar) {
+			if (!v) {
+				return false;
+			}
+		}
+
+		// Nëse të dyja kushtet plotësohen, grafi është pemë
+		return true;
+	}
+
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(() -> {
+			try {
+				String input = JOptionPane.showInputDialog("Shkruani numrin e nyjeve në graf:");
+				int n = Integer.parseInt(input);
+
+				int[][] matricaAdiacente = new int[n][n];
+
+				JOptionPane.showMessageDialog(null, "Shkruani vlerat e matricës adiacente rresht pas rreshti.");
+
+				for (int i = 0; i < n; i++) {
+					String rreshtiInput = JOptionPane
+							.showInputDialog("Shkruani rreshtin " + (i + 1) + " (të ndara me hapësirë):");
+					String[] vleratRreshtit = rreshtiInput.split(" ");
+
+					for (int j = 0; j < n; j++) {
+						matricaAdiacente[i][j] = Integer.parseInt(vleratRreshtit[j]);
+					}
+				}
+
+				if (eshtePeme(matricaAdiacente)) {
+					JOptionPane.showMessageDialog(null, "Grafi është pemë.");
+				} else {
+					JOptionPane.showMessageDialog(null, "Grafi nuk është pemë.");
+				}
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(null, "Input i pavlefshëm. Ju lutem provoni përsëri.", "Gabim",
+						JOptionPane.ERROR_MESSAGE);
+			}
+		});
+	}
+} 
