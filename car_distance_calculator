@@ -1,0 +1,86 @@
+ 
+import java.util.Scanner;
+
+public class DistanceCalcualtor {
+
+	/**
+	 * Metoda main per te ekzekutuar aplikacionin I lejon përdoruesit të zgjedhë
+	 * midis dy mënyrave: (a) Kalkulon distancen per kohe specifike (b) Kalkulon
+	 * distancen per kohe te ndryshme duke pasur parasysh shpejtesine dhe nxitimin
+	 * fillestar
+	 */
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.println("Kalkulimi i dastances se Automobilit");
+		System.out.println("Zgjedhe nje opsion: ");
+		System.out.println("(a) Kalkulo distancen per nje kohe specifike (Shkruaj 'a')");
+		System.out.println("(b) Kalkulo distancen per kohet 0, 1, 2, ... (Shkruaj 'b')");
+
+		char zgjedhja = scanner.next().charAt(0);
+
+		if (zgjedhja == 'a') {
+			kalkuloDistancenPerKoheSpecifike(scanner);
+		} else if (zgjedhja == 'b') {
+			kalkuloDistancenPerKoheTeNdryshme(scanner);
+		} else {
+			System.out.println("Zgjedhje jovalide. Te lutem rifillo dhe zgjedh 'a' ose 'b'. ");
+
+		}
+
+		scanner.close();
+	}
+
+	/**
+	 * Trajton pjesën (a): Llogarit distancën për një kohë specifike të dhënë
+	 * shpejtësia fillestare, nxitimi dhe koha.
+	 * 
+	 * @param scanner Objekti Scanner për hyrjen e përdoruesit.
+	 * a
+	 */
+
+	public static void kalkuloDistancenPerKoheSpecifike(Scanner scanner) {
+		System.out.println("Sheno shpejtesine fillestare (Vi) ne milje per ore:");
+		double shpejtesiaFillestare = scanner.nextDouble();
+// objektit scanner i dergojm messazhin nextDouble i cili qa do qe ka shkru useri e kthen vler te titpit double
+		System.out.println("Sheno nxitimin (a) ne milje per ore ne katrore:");
+		double nxitimi = scanner.nextDouble();
+
+		System.out.println("Sheno kohen (t) ne ore:");
+		double koha = scanner.nextDouble();
+
+		// Kalkulo distancen duke perdorur formulen: distanca = Vi * t + (1/2) * a * t^2
+		double distanca = shpejtesiaFillestare * koha + 0.5 * nxitimi * Math.pow(koha, 2);
+
+		System.out.println("Totali i distances se pershkuar eshte: " + distanca + " milje");
+	}
+
+ 	/**
+	 * Trajton pjesën (b): Llogarit distancat për herët 0, 1, 2, ... të dhëna
+	 * shpejtësia dhe nxitimi fillestar.
+	 * 
+	 * @param scanner Objekti Scanner për hyrjen e përdoruesit.
+	 * 
+	 */
+	public static void kalkuloDistancenPerKoheTeNdryshme(Scanner scanner) {
+		System.out.println("Sheno shpejtesine fillestare (Vi) ne milje per ore:");
+		double shpejtesiaFillestare = scanner.nextDouble();
+
+		System.out.println("Sheno nxitimin (a) ne milje per ore ne katrore:");
+		double nxitimi = scanner.nextDouble();
+
+		System.out.println("Sheno vleren e kohes maksimale (t) ne ore:");
+		int kohaMaksimale = scanner.nextInt();
+
+		System.out.println("Distanca per kohen 0 tek " + kohaMaksimale + " ore");
+		System.out.println("Koha (t) | Distanca(milje)");
+		System.out.println("----------------------");
+
+		// unaze per kohen 0, 1, 2, ..., kohaMaksimale dhe kalkulo distancen per secilen
+		for (int koha = 0; koha <= kohaMaksimale; koha++) {
+			double distanca = shpejtesiaFillestare * koha + 0.5 * nxitimi * Math.pow(koha, 2);
+			System.out.println("\t" + koha + "|" + "\t\t" + distanca);
+		}
+	}
+}
