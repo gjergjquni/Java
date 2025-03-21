@@ -1,0 +1,40 @@
+import java.awt.*;
+import javax.swing.*;
+
+/*Ky kod krijon një dritare GUI që shfaq sa herë është rifreskuar (painted). 
+ * Çdo herë që dritarja rishfaqet, numërimi (count) rritet dhe shfaqet në ekran. 
+ * Teksti "E ngjyrosur X herë" ndryshon dinamkisht sa herë që dritarja përditësohet.
+ */
+/** FieldExample: Afishon numrin e ngjyrosjeve të dritares */
+public class FieldExample extends JPanel {
+    private int count;  // numri i ngjyrosjeve të dritares
+
+    /** FieldExample: konstrukton dritaren */
+    public FieldExample() {
+        count = 0;  // dritarja akoma nuk është ngjyrosur
+        JFrame myFrame = new JFrame();
+        myFrame.getContentPane().add(this);
+        myFrame.setTitle("Shembulli fushe");
+        int height = 200;
+        myFrame.setSize(3 * height / 2, height);
+        myFrame.setVisible(true);
+    }
+
+    /** paintComponent vizaton numrin e ngjyrosjeve 
+     * @param g - penda grafike */
+    public void paintComponent(Graphics g) {
+        count = count + 1;  // ose count++
+        g.setColor(Color.black);
+        int margin = 25;
+        int lineHeight = 20;
+        int firstLine = 40;
+    //    int baseline = firstLine + lineHeight * count; Prove e vjeter
+        int baseline= firstLine;
+        g.drawString("E ngjyrosur " + count + " herë", margin, baseline);
+    }
+
+    /** main: për testim */
+    public static void main(String[] args) {
+        new FieldExample();
+    }
+}
