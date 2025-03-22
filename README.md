@@ -8,4 +8,7 @@ Welcome to my Java repository! Here, you'll find a collection of Java code that 
 - Continuous improvements and code optimizations.  
 - Regular updates with new content as I grow my skills.  
 
+##  Clone this repository:  
+   ```bash
+   git clone https://github.com/gjergjquni/Java.git
 
