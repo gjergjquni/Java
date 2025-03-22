@@ -1,0 +1,15 @@
+# Java compiled files
+*.class
+*.jar
+*.war
+
+# IntelliJ IDEA / Eclipse
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Build directories
+bin/
+target/
+out/
