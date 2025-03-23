@@ -1,0 +1,16 @@
+import javax.swing.*;
+import java.text.*;
+
+public class RootNumber {
+	public void rrenjakatrore() {
+		DecimalFormat decimal = new DecimalFormat("0.000");
+		String s = JOptionPane.showInputDialog("Vendos nje numer sipas deshires");
+		double a = new Double(s).doubleValue();
+		double root = (Math.sqrt(a));
+		JOptionPane.showMessageDialog(null, "Rrenja katrore e numrit " + a + " eshte " + decimal.format(root));
+	}
+	public static void main(String[] args) {
+		RootNumber numri_vendosur = new RootNumber();
+		numri_vendosur.rrenjakatrore();
+	}
+}
