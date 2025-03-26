@@ -1,0 +1,41 @@
+package Ushtrime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Permutations_13 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Shkruani nje numer (1 deri 13): ");
+        int n = scanner.nextInt();
+        scanner.close();
+
+        if (n < 1 || n > 13) {
+            System.out.println("Numri duhet te jete midis 1 dhe 13.");
+            return;
+        }
+
+        List<Integer> numbers = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            numbers.add(i);
+        }
+
+        System.out.println("Permutacionet:");
+        generatePermutations(numbers, new ArrayList<>());
+    }
+
+    private static void generatePermutations(List<Integer> remaining, List<Integer> current) {
+        if (remaining.isEmpty()) {
+            System.out.println(current);
+            return;
+        }
+        
+        for (int i = 0; i < remaining.size(); i++) {
+            List<Integer> newRemaining = new ArrayList<>(remaining);
+            List<Integer> newCurrent = new ArrayList<>(current);
+            
+            newCurrent.add(newRemaining.remove(i));
+            generatePermutations(newRemaining, newCurrent);
+        }
+    }
+}
