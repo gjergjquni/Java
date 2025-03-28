@@ -1,6 +1,6 @@
 package StrukturaTDhenave;
 
-public class random_cards {
+public class random_cards { 
     public static void main(String[] args) {
         int[] deck = new int[52];
         String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
