@@ -4,7 +4,7 @@ Welcome to my Java repository! Here, you'll find a collection of Java code that 
 
 ##  What's included?  
 - Java projects from different stages of my learning process.  
-- Various algorithms, problem-solving exercises, and mini-projects.  
+- Various algorithms, problem-solving exercises, and mini-projects.   
 - Continuous improvements and code optimizations.  
 - Regular updates with new content as I grow my skills.     
 
