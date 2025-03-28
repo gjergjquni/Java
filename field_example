@@ -5,7 +5,7 @@ import javax.swing.*;
  * Çdo herë që dritarja rishfaqet, numërimi (count) rritet dhe shfaqet në ekran. 
  * Teksti "E ngjyrosur X herë" ndryshon dinamkisht sa herë që dritarja përditësohet.
  */
-/** FieldExample: Afishon numrin e ngjyrosjeve të dritares */
+/** FieldExample: Afishon numrin e ngjyrosjeve të dritares */ 
 public class FieldExample extends JPanel {
     private int count;  // numri i ngjyrosjeve të dritares
 
