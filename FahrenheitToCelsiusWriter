@@ -1,5 +1,4 @@
- package Detyre;
-
+ 
 import java.awt.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
