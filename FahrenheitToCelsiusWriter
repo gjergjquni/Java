@@ -1,0 +1,46 @@
+ package Detyre;
+
+import java.awt.*;
+import javax.swing.*;
+import java.text.DecimalFormat;
+
+/* Konverton vlerën e temperaturës. */
+public class FahrenheitToCelsiusWriter extends JPanel {
+	private int fahrenheit;
+	private double celsius;
+	private int leftMargin = 20;
+	private int lineHeight = 20;
+
+	/** Konstruktori. */
+	public FahrenheitToCelsiusWriter() {
+		String input = JOptionPane.showInputDialog("Gradë Fahrenheit:");
+		fahrenheit = Integer.parseInt(input);
+		celsius = (5.0 / 9.0) * (fahrenheit - 32);
+		int frameHeight = 200;
+		JFrame f = new JFrame();
+		f.getContentPane().add(this);
+		f.setTitle("Celsius nga Fahrenheit");
+		f.setBackground(Color.white);
+		f.setSize(3 * frameHeight / 2, frameHeight);
+		f.setVisible(true);
+	}
+
+	/**
+	 * Vizaton porosinë.
+	 * 
+	 * @param g penda grafike
+	 */
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g); // Thirrje për të vizatuar përbërësit e trashëguar
+		g.setColor(Color.blue);
+		DecimalFormat formatter = new DecimalFormat("#.##"); // Inicializimi i formatter
+		g.drawString(fahrenheit + " Fahrenheit janë ", leftMargin, lineHeight);
+		g.drawString(formatter.format(celsius) + " Celsius", leftMargin, 2 * lineHeight);
+	}
+
+	/** Për testim të thjeshtë. */
+	public static void main(String[] args) {
+		new FahrenheitToCelsiusWriter();
+	}
+}
+
