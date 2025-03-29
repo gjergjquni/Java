@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.text.DecimalFormat;
 
 /* Konverton vlerën e temperaturës. */
-public class FahrenheitToCelsiusWriter extends JPanel {
+public class FahrenheitToCelsiusWriter extends JPanel { 
 	private int fahrenheit;
 	private double celsius;
 	private int leftMargin = 20;
