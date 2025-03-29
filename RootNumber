@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.text.*;
 
-public class RootNumber {
+public class RootNumber { 
 	public void rrenjakatrore() {
 		DecimalFormat decimal = new DecimalFormat("0.00");
 		String s = JOptionPane.showInputDialog("Vendos nje numer sipas deshires");
