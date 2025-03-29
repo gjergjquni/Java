@@ -3,7 +3,7 @@ import java.awt.*;
 import java.lang.*;
 import javax.swing.*;
 import java.text.*;
-
+ 
 public class money_split {
 	public static void main(String[] args) {
 		String input = JOptionPane.showInputDialog("Vendos shifren e parave ne euro");
