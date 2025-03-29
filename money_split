@@ -1,0 +1,37 @@
+package UshtrimeTesti;
+
+import java.awt.*;
+import java.lang.*;
+import javax.swing.*;
+import java.text.*;
+
+public class money_split {
+	public static void main(String[] args) {
+		String input = JOptionPane.showInputDialog("Vendos shifren e parave ne euro");
+		int euro = new Integer(input).intValue();
+		String input2 = JOptionPane.showInputDialog("Vendos shifren e parave ne cent");
+		int cent = new Integer(input2).intValue();
+
+		int parate = (100 * euro) + cent;
+		JOptionPane.showMessageDialog(null, "Totali eshte " + parate / 100 + " euro " + "e " + (cent % 100) + " cent");
+
+		System.out.println("Ju keni monedha 5 euroshe " + (parate / 500) + " cope");
+		parate = parate % 500;
+		System.out.println("Ju keni monedha 2 euroshe " + (parate / 200) + " cope");
+		parate = parate % 200;
+		System.out.println("Ju keni monedha 1 euroshe " + (parate / 100) + " cope");
+		parate = parate % 100;
+		System.out.println("Ju keni monedha 50 centshe " + (parate / 50) + " cope");
+		parate = parate % 50;
+		System.out.println("Ju keni monedha 20 centshe " + (parate / 20) + " cope");
+		parate = parate % 20;
+		System.out.println("Ju keni monedha 10 centshe " + (parate / 10) + " cope");
+		parate = parate % 10;
+		System.out.println("Ju keni monedha 5 centshe " + (parate / 5) + " cope");
+		parate = parate % 5;
+		System.out.println("Ju keni monedha 2 centshe " + (parate / 2) + " cope");
+		parate = parate % 2;
+		System.out.println("Ju keni monedha 1 centshe " + (parate) + " cope");
+
+	}
+}
