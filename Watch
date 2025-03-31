@@ -1,0 +1,56 @@
+package UshtrimeTesti;
+
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
+
+public class Watch extends JPanel {
+    public Watch() {
+        int gjeresia = 200;
+        JFrame korniza = new JFrame();
+        korniza.getContentPane().add(this);
+        korniza.setTitle("Ora");
+        korniza.setSize(gjeresia, gjeresia);
+        korniza.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        korniza.setVisible(true);
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int gjeresia = 200;
+        g.setColor(Color.white);
+        g.fillRect(0, 0, gjeresia, gjeresia);
+        
+        GregorianCalendar koha = new GregorianCalendar();
+        int minutat = koha.get(Calendar.MINUTE);
+        int oret = koha.get(Calendar.HOUR);
+        
+        // Angle calculations
+        int kendiMinutave = 90 - (minutat * 6);
+        int kendiOreve = 90 - (oret * 30 + minutat / 2);
+        
+        int qendraX = gjeresia / 2;
+        int qendraY = gjeresia / 2;
+        int rrezja = 80;
+        
+        g.setColor(Color.black);
+        g.drawOval(qendraX - rrezja / 2, qendraY - rrezja / 2, rrezja, rrezja);
+        
+        // Draw minute hand
+        int xMinutave = qendraX + (int) (rrezja * 0.4 * Math.cos(Math.toRadians(kendiMinutave)));
+        int yMinutave = qendraY - (int) (rrezja * 0.4 * Math.sin(Math.toRadians(kendiMinutave)));
+        g.setColor(Color.red);
+        g.drawLine(qendraX, qendraY, xMinutave, yMinutave);
+        
+        // Draw hour hand
+        int xOreve = qendraX + (int) (rrezja * 0.25 * Math.cos(Math.toRadians(kendiOreve)));
+        int yOreve = qendraY - (int) (rrezja * 0.25 * Math.sin(Math.toRadians(kendiOreve)));
+        g.setColor(Color.blue);
+        g.drawLine(qendraX, qendraY, xOreve, yOreve);
+    }
+
+    public static void main(String[] args) {
+        new Watch();
+    }
+} 
