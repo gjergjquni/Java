@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.util.*;
 
 public class Watch extends JPanel {
-    public Watch() {
+    public Watch() { 
         int gjeresia = 200;
         JFrame korniza = new JFrame();
         korniza.getContentPane().add(this);
